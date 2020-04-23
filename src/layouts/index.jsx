@@ -3,7 +3,7 @@ import styles from './index.less';
 import {Link} from 'umi';
 import { Layout, Menu } from 'antd';
 import {connect} from 'dva';
-import EditBox from '@/components/editBox';
+import EditBox from '@/components/EditBox';
 
 const { Header, Content, Footer,Sider } = Layout;
 const menuData = [
@@ -24,7 +24,7 @@ class WorkshopLayout extends React.PureComponent {
         } = this.props;
 
         //初始化获取所有设备基本配置数据和创建websocket
-         dispatch({
+          dispatch({
             type: 'machine/initAllMachine',
             payload:dispatch,
         });

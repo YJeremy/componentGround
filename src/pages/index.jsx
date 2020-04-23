@@ -5,6 +5,7 @@ import { connect } from 'dva';
 const { Title, Paragraph, Text } = Typography;
 import EditBox from '@/components/EditBox';
 
+const title = '缓存可编辑';
 
 class Homepage extends React.Component {
 
@@ -21,7 +22,7 @@ class Homepage extends React.Component {
         return (
             <div>
                 <DispalyCard></DispalyCard>
-                <EditBox title={`缓存可编辑`} txt={txt} onChange = {this.onChange}></EditBox>
+                <EditBox title={title} txt={txt} onChange = {this.onChange}></EditBox>
             </div>
         )
     }

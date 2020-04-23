@@ -1,4 +1,4 @@
-import fetch from 'dva/fetch';
+import {fetch} from 'dva';
 //import router from 'umi/router';
 import hash from 'hash.js';
 import { isAntdPro } from './utils';
