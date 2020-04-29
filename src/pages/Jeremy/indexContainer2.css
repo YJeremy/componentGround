@@ -1,0 +1,22 @@
+.one {
+  font-size: var(--font-size)
+}
+
+.two {
+  --font-size: 12px;
+  font-size: var(--font-size)
+}
+
+.three {
+  --font-size: 20px;
+  font-size: var(--font-size)
+
+}
+
+.four {
+  font-size: var(--font-size)
+}
+
+.five {
+  font-size: var(--font-size)
+}

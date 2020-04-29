@@ -9,7 +9,7 @@ const dispalyCard = (props) => {
     const str= arr.join('/')
 
     return (
-        <div>
+        <>
             <h1> 示例展示</h1>
             <Card title="加工时间信息" extra={<a href="#">More</a>} style={{ width: 300 }}>
                 <p>运行时间: {cut}</p>
@@ -22,7 +22,7 @@ const dispalyCard = (props) => {
                 <p>{str}</p>
                 <p>代码执行：{gcodeLine}</p>
             </Card>
-        </div>
+        </>
     )
 }
 

@@ -2,9 +2,9 @@ import React from 'react';
 import DispalyCard from '@/components/DisplayCard';
 import { Typography } from 'antd';
 import { connect } from 'dva';
-const { Title, Paragraph, Text } = Typography;
 import EditBox from '@/components/EditBox';
 
+const { Title, Paragraph, Text } = Typography;
 const title = '缓存可编辑';
 
 class Homepage extends React.Component {

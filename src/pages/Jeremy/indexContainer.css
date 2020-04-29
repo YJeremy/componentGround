@@ -1,0 +1,91 @@
+:root{
+    --word1:'are';
+    --word2:'you';
+    --word3:'ok?';
+}
+/*全局使用多个自定义属性 +  伪类*/
+
+/*使用 id选择器*/
+#container {
+  width: 400px;
+  height: 150px;
+  background-color: #ffeead;
+  border: 1px solid #666;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/*子节点操作*/
+#container > div {
+  width: 70px;
+  height: 50px;
+}
+
+#container div:nth-child(2n) {
+  background-color: lightgreen;
+}
+#container div:nth-child(2n+1) {
+  background-color: lightpink;
+}
+
+/*局部变量 */
+.item1{
+    --green:black;
+    background-color: var(--green) !important;
+}
+
+/*class选择器 + 伪元素*/
+.item2::before{
+    content:var(--word1) " " var(--word2) " "var(--word3);
+}
+
+.item2::after {
+    content:"item2";
+}
+
+.item5::after {
+    content:"item5";
+}
+
+.outer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner {
+    width: 130px;
+    height: 130px;
+    background-color: lightsteelblue;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*全局CSS 标签选择器*/
+body
+{
+    background-color:#d0e4fe;
+}
+
+p
+{
+    font-size:20px;
+}
+
+div
+{
+    font-size:23px;
+}
+
+.floadbox{
+    font-size:56px;
+    width:250px;
+    height:250px;
+    border:1px solid red;/*-width -style -color*/
+    float:right;
+    margin:5px;
+}

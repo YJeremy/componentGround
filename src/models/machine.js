@@ -2,7 +2,7 @@
 import { isNullOrUndefined } from '@/utils/utils';
 import { createWS } from '@/utils/createWS';
 import { getListCNC } from '../services/customapi';
-import { Protocol, cnclinkAddr  } from '../utils/dynamic-global';
+import { Protocol, cnclinkAddr } from '../utils/dynamic-global';
 //import dispatch from 'dva';
 
 export default {
@@ -27,8 +27,6 @@ export default {
                     cnclink: devs,
                 }
             })
-
-            console.log('t',window)
 
             if (devs.length != 0) {
                 //创建各台设备的ws
