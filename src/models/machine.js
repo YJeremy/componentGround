@@ -32,7 +32,7 @@ export default {
                 //创建各台设备的ws
                 devs.forEach((elm, index) => {
                     const timeout = (index * 100) % 1000;
-                    window.setTimeout(
+                    window.setTimeout( //过多台ws 也会占用卡顿
                         () =>
                             createWS(
                                 { linkAddr: cnclinkAddr, api: elm.api },
@@ -43,6 +43,11 @@ export default {
                     );
                 })
             }
+
+        },
+
+        *wstest({payload},{call,put}){
+            
 
         }
     },

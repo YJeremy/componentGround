@@ -2,13 +2,13 @@ import './index.css';
 
 const app = () => {
     return(
-        <div class="learncss">
-            <div class="header">
+        <div className="learncss">
+            <div className="header">
                 <h1>Chania</h1>
             </div>
 
-            <div class="row">
-                <div class="col-3 col-m-3 menu">
+            <div className="row">
+                <div className="col-3 col-m-3 menu">
                     <ul>
                         <li>The Flight</li>
                         <li>The City</li>
@@ -17,13 +17,13 @@ const app = () => {
                     </ul>
                 </div>
 
-                <div class="col-6 col-m-9">
+                <div className="col-6 col-m-9">
                     <h1>The City 1</h1>
                     <p>Chania is the capital of the Chania region on the island of Crete. The city can be divided in two parts, the old town and the modern city.</p>
                 </div>
 
-                <div class="col-3 col-m-12">
-                    <div class="aside">
+                <div className="col-3 col-m-12">
+                    <div className="aside">
                         <h2>What?</h2>
                         <p>Chania is a city on the island of Crete.</p>
                         <h2>Where?</h2>
@@ -35,7 +35,7 @@ const app = () => {
 
             </div>
 
-            <div class="footer">
+            <div className="footer">
                 <p>Resize the browser window to see how the content respond to the resizing.</p>
             </div>
         </div>

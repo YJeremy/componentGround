@@ -20,12 +20,14 @@
     ]
   },
   "dependencies": {
+    "@ant-design/icons": "^4.1.0",
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.1.0",
     "antd": "^4.1.1",
     "antd-mobile": "^2.3.1",
     "axios": "^0.19.2",
     "classnames": "^2.2.6",
+    "echarts": "^4.7.0",
     "lint-staged": "^10.0.7",
     "memoize-one": "^5.1.1",
     "prettier": "^1.19.1",
@@ -33,6 +35,7 @@
     "react-container-query": "^0.11.2",
     "react-document-title": "^2.0.3",
     "react-dom": "^16.12.0",
+    "react-highlight-words": "^0.16.0",
     "react-media": "^1.10.0",
     "umi": "^3.1.0",
     "yorkie": "^2.0.0"

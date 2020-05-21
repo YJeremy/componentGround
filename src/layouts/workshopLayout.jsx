@@ -8,7 +8,6 @@ import Media from 'react-media';
 import { ContainerQuery } from 'react-container-query';
 import DocumentTitle from 'react-document-title';
 import classNames from 'classnames';
-import { websocketModel } from './utils';
 import './all.css';
 
 
@@ -39,19 +38,12 @@ const query = {
 
 const { Header, Content, Footer, Sider } = Layout;
 const menuData = [
-    { route: '/', name: '首页' },
+    { route: '/overview', name: '总览' },
     { route: '/jeremy', name: 'Jeremy\'s' },
     { route: '/mary', name: 'Mary\'s' },
     { route: '/lucy', name: 'Lucy\'s'},
-    { route: '/lifetime', name: '组件生命周期与props传值'},
-    { route: '/antduse', name: '带参数用箭头 X UiModal'},
-    { route: '/container', name:'容器写法 X UiSpin'},
-    { route: '/parentref', name:'react父子组件传值'},
-    { route: '/tablestudy', name:'UiTable_搜索表格'},
-    { route: '/table4screens', name:'UiTable_响应式表格'},
-    { route: '/Responsegrid', name: 'UiGrid_响应式栅格'},
-    { route: '/websockettest', name: 'Websocket测试_JSX写法'},
-    { route: '/tableoverview', name: 'Table整体数据数组解引'},
+    { route: '/lifetime', name: '组件生命周期'},
+    { route: '/Responsegrid', name: ''},
 ]
 const title = `可保存的笔记`
 
@@ -63,8 +55,6 @@ class WorkshopLayout extends React.PureComponent {
             dispatch,
         } = this.props;
 
-       //测试websocket 创建全局的ws,进而更新model ws,
-        createWS('ws://127.0.0.1:11520/ws_array/dev1', dispatch)
         //初始化获取所有设备基本配置数据和创建websocket
         /* dispatch({
             type: 'machine/initAllMachine',
@@ -88,7 +78,8 @@ class WorkshopLayout extends React.PureComponent {
         } = this.props
         const layout = (
             <Layout>
-                <Sider>
+                <Header>
+                    <div className={styles.logo}>车间管理系统 </div>
                     <div>
                         <Menu
                             theme="dark"
@@ -105,24 +96,25 @@ class WorkshopLayout extends React.PureComponent {
                             }
                         </Menu>
                     </div>
-                </Sider>
+                </Header>
                 <Layout>
-                    <Header style={{ padding:2}}>组件练习</Header>
                     <Content style={{ padding: '0 10px 0px 50px ' }}>
                         <div style={{ background: '#fff', padding: 24, minHeight: 580 }}>
                             {children}
                         </div>
                     </Content>
-
-                <Footer style={{ textAlign: 'center' }}>基于UmiJS开发 create By Jeremy</Footer>
+                    <Sider style={{ background: `#ffff`, margin: '0 50px 0 0' }}>
+                        <EditBox title={title} txt={this.state.str} onChange={this.onChange}></EditBox>
+                    </Sider>
                 </Layout>
+                <Footer style={{ textAlign: 'center' }}>基于UmiJS开发 create By Jeremy</Footer>
             </Layout>
         );
 
         //对浏览器层面做修饰
         return(
             <React.Fragment >
-                <DocumentTitle title={'组件练习'}>
+                <DocumentTitle title={'车间管理系统'}>
                     <ContainerQuery query={query}>
                         {params =>(
                             <div className={classNames(params)}>{layout}</div>
@@ -132,61 +124,15 @@ class WorkshopLayout extends React.PureComponent {
                 </DocumentTitle>
             </React.Fragment>
         )
-
-
     }
 
 }
 
-const intervalCrossover = 1000;
-export const createWS = (api, dispatch) => {
-    const ws = new WebSocket(`${api}`);
-    let now = Number(new Date());
 
-    ws.addEventListener('open', () => {
-        dispatch({
-            type: 'websocketTest/wsOpen',
-            payload: {
-                ws,
-            },
-        });
-    });
-
-    const wsClose = () => {
-        // 防止二次触发, 可能没用
-        ws.removeEventListener('close', wsClose);
-        // 出现错误/关闭, 关闭连接; 触发重渲染, 然后重连; 同时防止关闭了新的连接
-        dispatch({
-            type: 'websocketTest/wsClose',
-            payload: {
-                ws,
-            },
-        });
-    };
-
-    //ws.addEventListener('close', wsClose); //因为后面加了延时，会出现把第一台关闭了的情况，所以注释这里
-    ws.addEventListener('error', () => {
-        ws.close();
-    });
-    ws.addEventListener('message', ({ data }) => {
-        // slow down 每1秒一次信息
-        if (Number(new Date()) - now < intervalCrossover) {
-            return;
-        }
-        now = Number(new Date());
-        const wsdata = JSON.parse(data);
-        // 更新数据
-        dispatch({
-            type: 'websocketTest/wsMsg',
-            payload: {
-                dynamic: wsdata,
-            },
-        });
-    });
-};
-
-
-export default connect(websocketModel)(props => (
+export default connect(({ machine, staticModel }) => ({
+    machine: machine,
+    staticModel: staticModel,
+}))(props => (
     <Media query="(max-width:800px)">
         {isMobile => <WorkshopLayout {...props} isMobile={isMobile}></WorkshopLayout>}
     </Media>

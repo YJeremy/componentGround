@@ -51,7 +51,6 @@ export const machineModel = ({ machine, staticModel,program }) => {
         cncprogram:program.code,
     }
 
-
     // 未初始化
     if (page.type === '' || page.type !== 'cnclink') {
         return {

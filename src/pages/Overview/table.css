@@ -1,0 +1,25 @@
+.tableAlarm {
+    background : #ffccc7;
+}
+
+.tableOffline {
+    background:#d9d9d9;
+
+}
+
+.tableCut {
+    background:#d9f7be;
+}
+
+.tableNodevice{
+    background:#ffffff;
+}
+
+
+.tableIdle{
+    background:#ffffb8;
+}
+
+.tableOnmouse{
+    background:#5599FF;
+}
