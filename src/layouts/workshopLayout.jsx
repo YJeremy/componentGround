@@ -42,8 +42,7 @@ const menuData = [
     { route: '/jeremy', name: 'Jeremy\'s' },
     { route: '/mary', name: 'Mary\'s' },
     { route: '/lucy', name: 'Lucy\'s'},
-    { route: '/lifetime', name: '组件生命周期'},
-    { route: '/Responsegrid', name: ''},
+
 ]
 const title = `可保存的笔记`
 
