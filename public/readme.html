@@ -1,0 +1,2091 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+  <title>设备管理系统（用户手册）[1]</title>
+  <style type="text/css">html {
+    overflow-x: initial !important;
+  }
+
+  :root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --select-text-bg-color: #B5D6FC;
+    --select-text-font-color: auto;
+    --monospace: "Lucida Console", Consolas, "Courier", monospace;
+  }
+
+  html {
+    font-size: 14px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    margin: 0px;
+    padding: 0px;
+    height: auto;
+    bottom: 0px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    font-size: 1rem;
+    line-height: 1.42857;
+    overflow-x: hidden;
+    background: inherit;
+    tab-size: 4;
+  }
+
+  iframe {
+    margin: auto;
+  }
+
+  a.url {
+    word-break: break-all;
+  }
+
+  a:active, a:hover {
+    outline: 0px;
+  }
+
+  .in-text-selection, ::selection {
+    text-shadow: none;
+    background: var(--select-text-bg-color);
+    color: var(--select-text-font-color);
+  }
+
+  #write {
+    margin: 0px auto;
+    height: auto;
+    width: inherit;
+    word-break: normal;
+    overflow-wrap: break-word;
+    position: relative;
+    white-space: normal;
+    overflow-x: visible;
+    padding-top: 40px;
+  }
+
+  #write.first-line-indent p {
+    text-indent: 2em;
+  }
+
+  #write.first-line-indent li p, #write.first-line-indent p * {
+    text-indent: 0px;
+  }
+
+  #write.first-line-indent li {
+    margin-left: 2em;
+  }
+
+  .for-image #write {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  body.typora-export {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .typora-export .footnote-line, .typora-export li, .typora-export p {
+    white-space: pre-wrap;
+  }
+
+  @media screen and (max-width: 500px) {
+    body.typora-export {
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+
+    #write {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .CodeMirror-sizer {
+      margin-left: 0px !important;
+    }
+
+    .CodeMirror-gutters {
+      display: none !important;
+    }
+  }
+
+  #write li > figure:last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  #write ol, #write ul {
+    position: relative;
+  }
+
+  img {
+    max-width: 100%;
+    vertical-align: middle;
+  }
+
+  button, input, select, textarea {
+    color: inherit;
+    font: inherit;
+  }
+
+  input[type="checkbox"], input[type="radio"] {
+    line-height: normal;
+    padding: 0px;
+  }
+
+  *, ::after, ::before {
+    box-sizing: border-box;
+  }
+
+  #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre {
+    width: inherit;
+  }
+
+  #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p {
+    position: relative;
+  }
+
+  p {
+    line-height: inherit;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    break-after: avoid-page;
+    break-inside: avoid;
+    orphans: 2;
+  }
+
+  p {
+    orphans: 4;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+  }
+
+  h4 {
+    font-size: 1.4rem;
+  }
+
+  h5 {
+    font-size: 1.2rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+  }
+
+  .md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .md-blockmeta {
+    color: rgb(204, 204, 204);
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  a {
+    cursor: pointer;
+  }
+
+  sup.md-footnote {
+    padding: 2px 4px;
+    background-color: rgba(238, 238, 238, 0.7);
+    color: rgb(85, 85, 85);
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  sup.md-footnote a, sup.md-footnote a:hover {
+    color: inherit;
+    text-transform: inherit;
+    text-decoration: inherit;
+  }
+
+  #write input[type="checkbox"] {
+    cursor: pointer;
+    width: inherit;
+    height: inherit;
+  }
+
+  figure {
+    overflow-x: auto;
+    margin: 1.2em 0px;
+    max-width: calc(100% + 16px);
+    padding: 0px;
+  }
+
+  figure > table {
+    margin: 0px !important;
+  }
+
+  tr {
+    break-inside: avoid;
+    break-after: auto;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0px;
+    width: 100%;
+    overflow: auto;
+    break-inside: auto;
+    text-align: left;
+  }
+
+  table.md-table td {
+    min-width: 32px;
+  }
+
+  .CodeMirror-gutters {
+    border-right: 0px;
+    background-color: inherit;
+  }
+
+  .CodeMirror-linenumber {
+    user-select: none;
+  }
+
+  .CodeMirror {
+    text-align: left;
+  }
+
+  .CodeMirror-placeholder {
+    opacity: 0.3;
+  }
+
+  .CodeMirror pre {
+    padding: 0px 4px;
+  }
+
+  .CodeMirror-lines {
+    padding: 0px;
+  }
+
+  div.hr:focus {
+    cursor: none;
+  }
+
+  #write pre {
+    white-space: pre-wrap;
+  }
+
+  #write.fences-no-line-wrapping pre {
+    white-space: pre;
+  }
+
+  #write pre.ty-contain-cm {
+    white-space: normal;
+  }
+
+  .CodeMirror-gutters {
+    margin-right: 4px;
+  }
+
+  .md-fences {
+    font-size: 0.9rem;
+    display: block;
+    break-inside: avoid;
+    text-align: left;
+    overflow: visible;
+    white-space: pre;
+    background: inherit;
+    position: relative !important;
+  }
+
+  .md-diagram-panel {
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+    padding-top: 0px;
+    padding-bottom: 8px;
+    overflow-x: auto;
+  }
+
+  #write .md-fences.mock-cm {
+    white-space: pre-wrap;
+  }
+
+  .md-fences.md-fences-with-lineno {
+    padding-left: 0px;
+  }
+
+  #write.fences-no-line-wrapping .md-fences.mock-cm {
+    white-space: pre;
+    overflow-x: auto;
+  }
+
+  .md-fences.mock-cm.md-fences-with-lineno {
+    padding-left: 8px;
+  }
+
+  .CodeMirror-line, twitterwidget {
+    break-inside: avoid;
+  }
+
+  .footnotes {
+    opacity: 0.8;
+    font-size: 0.9rem;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  .footnotes + .footnotes {
+    margin-top: 0px;
+  }
+
+  .md-reset {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    outline: 0px;
+    vertical-align: top;
+    background: 0px 0px;
+    text-decoration: none;
+    text-shadow: none;
+    float: none;
+    position: static;
+    width: auto;
+    height: auto;
+    white-space: nowrap;
+    cursor: inherit;
+    -webkit-tap-highlight-color: transparent;
+    line-height: normal;
+    font-weight: 400;
+    text-align: left;
+    box-sizing: content-box;
+    direction: ltr;
+  }
+
+  li div {
+    padding-top: 0px;
+  }
+
+  blockquote {
+    margin: 1rem 0px;
+  }
+
+  li .mathjax-block, li p {
+    margin: 0.5rem 0px;
+  }
+
+  li {
+    margin: 0px;
+    position: relative;
+  }
+
+  blockquote > :last-child {
+    margin-bottom: 0px;
+  }
+
+  blockquote > :first-child, li > :first-child {
+    margin-top: 0px;
+  }
+
+  .footnotes-area {
+    color: rgb(136, 136, 136);
+    margin-top: 0.714rem;
+    padding-bottom: 0.143rem;
+    white-space: normal;
+  }
+
+  #write .footnote-line {
+    white-space: pre-wrap;
+  }
+
+  @media print {
+    body, html {
+      border: 1px solid transparent;
+      height: 99%;
+      break-after: avoid;
+      break-before: avoid;
+    }
+
+    #write {
+      margin-top: 0px;
+      padding-top: 0px;
+      border-color: transparent !important;
+    }
+
+    .typora-export * {
+      -webkit-print-color-adjust: exact;
+    }
+
+    html.blink-to-pdf {
+      font-size: 13px;
+    }
+
+    .typora-export #write {
+      padding-left: 32px;
+      padding-right: 32px;
+      padding-bottom: 0px;
+      break-after: avoid;
+    }
+
+    .typora-export #write::after {
+      height: 0px;
+    }
+  }
+
+  .footnote-line {
+    margin-top: 0.714em;
+    font-size: 0.7em;
+  }
+
+  a img, img a {
+    cursor: pointer;
+  }
+
+  pre.md-meta-block {
+    font-size: 0.8rem;
+    min-height: 0.8rem;
+    white-space: pre-wrap;
+    background: rgb(204, 204, 204);
+    display: block;
+    overflow-x: hidden;
+  }
+
+  p > .md-image:only-child:not(.md-img-error) img, p > img:only-child {
+    display: block;
+    margin: auto;
+  }
+
+  p > .md-image:only-child {
+    display: inline-block;
+    width: 100%;
+  }
+
+  #write .MathJax_Display {
+    margin: 0.8em 0px 0px;
+  }
+
+  .md-math-block {
+    width: 100%;
+  }
+
+  .md-math-block:not(:empty)::after {
+    display: none;
+  }
+
+  [contenteditable="true"]:active, [contenteditable="true"]:focus {
+    outline: 0px;
+    box-shadow: none;
+  }
+
+  .md-task-list-item {
+    position: relative;
+    list-style-type: none;
+  }
+
+  .task-list-item.md-task-list-item {
+    padding-left: 0px;
+  }
+
+  .md-task-list-item > input {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin-left: -1.2em;
+    margin-top: calc(1em - 10px);
+    border: none;
+  }
+
+  .math {
+    font-size: 1rem;
+  }
+
+  .md-toc {
+    min-height: 3.58rem;
+    position: relative;
+    font-size: 0.9rem;
+    border-radius: 10px;
+  }
+
+  .md-toc-content {
+    position: relative;
+    margin-left: 0px;
+  }
+
+  .md-toc-content::after, .md-toc::after {
+    display: none;
+  }
+
+  .md-toc-item {
+    display: block;
+    color: rgb(65, 131, 196);
+  }
+
+  .md-toc-item a {
+    text-decoration: none;
+  }
+
+  .md-toc-inner:hover {
+    text-decoration: underline;
+  }
+
+  .md-toc-inner {
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .md-toc-h1 .md-toc-inner {
+    margin-left: 0px;
+    font-weight: 700;
+  }
+
+  .md-toc-h2 .md-toc-inner {
+    margin-left: 2em;
+  }
+
+  .md-toc-h3 .md-toc-inner {
+    margin-left: 4em;
+  }
+
+  .md-toc-h4 .md-toc-inner {
+    margin-left: 6em;
+  }
+
+  .md-toc-h5 .md-toc-inner {
+    margin-left: 8em;
+  }
+
+  .md-toc-h6 .md-toc-inner {
+    margin-left: 10em;
+  }
+
+  @media screen and (max-width: 48em) {
+    .md-toc-h3 .md-toc-inner {
+      margin-left: 3.5em;
+    }
+
+    .md-toc-h4 .md-toc-inner {
+      margin-left: 5em;
+    }
+
+    .md-toc-h5 .md-toc-inner {
+      margin-left: 6.5em;
+    }
+
+    .md-toc-h6 .md-toc-inner {
+      margin-left: 8em;
+    }
+  }
+
+  a.md-toc-inner {
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+
+  .footnote-line a:not(.reversefootnote) {
+    color: inherit;
+  }
+
+  .md-attr {
+    display: none;
+  }
+
+  .md-fn-count::after {
+    content: ".";
+  }
+
+  code, pre, samp, tt {
+    font-family: var(--monospace);
+  }
+
+  kbd {
+    margin: 0px 0.1em;
+    padding: 0.1em 0.6em;
+    font-size: 0.8em;
+    color: rgb(36, 39, 41);
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(173, 179, 185);
+    border-radius: 3px;
+    box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+
+  .md-comment {
+    color: rgb(162, 127, 3);
+    opacity: 0.8;
+    font-family: var(--monospace);
+  }
+
+  code {
+    text-align: left;
+    vertical-align: initial;
+  }
+
+  a.md-print-anchor {
+    white-space: pre !important;
+    border-width: initial !important;
+    border-style: none !important;
+    border-color: initial !important;
+    display: inline-block !important;
+    position: absolute !important;
+    width: 1px !important;
+    right: 0px !important;
+    outline: 0px !important;
+    background: 0px 0px !important;
+    text-decoration: initial !important;
+    text-shadow: initial !important;
+  }
+
+  .md-inline-math .MathJax_SVG .noError {
+    display: none !important;
+  }
+
+  .html-for-mac .inline-math-svg .MathJax_SVG {
+    vertical-align: 0.2px;
+  }
+
+  .md-math-block .MathJax_SVG_Display {
+    text-align: center;
+    margin: 0px;
+    position: relative;
+    text-indent: 0px;
+    max-width: none;
+    max-height: none;
+    min-height: 0px;
+    min-width: 100%;
+    width: auto;
+    overflow-y: hidden;
+    display: block !important;
+  }
+
+  .MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display {
+    width: auto;
+    margin: inherit;
+    display: inline-block !important;
+  }
+
+  .MathJax_SVG .MJX-monospace {
+    font-family: var(--monospace);
+  }
+
+  .MathJax_SVG .MJX-sans-serif {
+    font-family: sans-serif;
+  }
+
+  .MathJax_SVG {
+    display: inline;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    zoom: 90%;
+    text-indent: 0px;
+    text-align: left;
+    text-transform: none;
+    letter-spacing: normal;
+    word-spacing: normal;
+    overflow-wrap: normal;
+    white-space: nowrap;
+    float: none;
+    direction: ltr;
+    max-width: none;
+    max-height: none;
+    min-width: 0px;
+    min-height: 0px;
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .MathJax_SVG * {
+    transition: none 0s ease 0s;
+  }
+
+  .MathJax_SVG_Display svg {
+    vertical-align: middle !important;
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
+  }
+
+  .os-windows.monocolor-emoji .md-emoji {
+    font-family: "Segoe UI Symbol", sans-serif;
+  }
+
+  .md-diagram-panel > svg {
+    max-width: 100%;
+  }
+
+  [lang="mermaid"] svg, [lang="flow"] svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  [lang="mermaid"] .node text {
+    font-size: 1rem;
+  }
+
+  table tr th {
+    border-bottom: 0px;
+  }
+
+  video {
+    max-width: 100%;
+    display: block;
+    margin: 0px auto;
+  }
+
+  iframe {
+    max-width: 100%;
+    width: 100%;
+    border: none;
+  }
+
+  .highlight td, .highlight tr {
+    border: 0px;
+  }
+
+
+  .CodeMirror {
+    height: auto;
+  }
+
+  .CodeMirror.cm-s-inner {
+    background: inherit;
+  }
+
+  .CodeMirror-scroll {
+    overflow: auto hidden;
+    z-index: 3;
+  }
+
+  .CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler {
+    background-color: rgb(255, 255, 255);
+  }
+
+  .CodeMirror-gutters {
+    border-right: 1px solid rgb(221, 221, 221);
+    background: inherit;
+    white-space: nowrap;
+  }
+
+  .CodeMirror-linenumber {
+    padding: 0px 3px 0px 5px;
+    text-align: right;
+    color: rgb(153, 153, 153);
+  }
+
+  .cm-s-inner .cm-keyword {
+    color: rgb(119, 0, 136);
+  }
+
+  .cm-s-inner .cm-atom, .cm-s-inner.cm-atom {
+    color: rgb(34, 17, 153);
+  }
+
+  .cm-s-inner .cm-number {
+    color: rgb(17, 102, 68);
+  }
+
+  .cm-s-inner .cm-def {
+    color: rgb(0, 0, 255);
+  }
+
+  .cm-s-inner .cm-variable {
+    color: rgb(0, 0, 0);
+  }
+
+  .cm-s-inner .cm-variable-2 {
+    color: rgb(0, 85, 170);
+  }
+
+  .cm-s-inner .cm-variable-3 {
+    color: rgb(0, 136, 85);
+  }
+
+  .cm-s-inner .cm-string {
+    color: rgb(170, 17, 17);
+  }
+
+  .cm-s-inner .cm-property {
+    color: rgb(0, 0, 0);
+  }
+
+  .cm-s-inner .cm-operator {
+    color: rgb(152, 26, 26);
+  }
+
+  .cm-s-inner .cm-comment, .cm-s-inner.cm-comment {
+    color: rgb(170, 85, 0);
+  }
+
+  .cm-s-inner .cm-string-2 {
+    color: rgb(255, 85, 0);
+  }
+
+  .cm-s-inner .cm-meta {
+    color: rgb(85, 85, 85);
+  }
+
+  .cm-s-inner .cm-qualifier {
+    color: rgb(85, 85, 85);
+  }
+
+  .cm-s-inner .cm-builtin {
+    color: rgb(51, 0, 170);
+  }
+
+  .cm-s-inner .cm-bracket {
+    color: rgb(153, 153, 119);
+  }
+
+  .cm-s-inner .cm-tag {
+    color: rgb(17, 119, 0);
+  }
+
+  .cm-s-inner .cm-attribute {
+    color: rgb(0, 0, 204);
+  }
+
+  .cm-s-inner .cm-header, .cm-s-inner.cm-header {
+    color: rgb(0, 0, 255);
+  }
+
+  .cm-s-inner .cm-quote, .cm-s-inner.cm-quote {
+    color: rgb(0, 153, 0);
+  }
+
+  .cm-s-inner .cm-hr, .cm-s-inner.cm-hr {
+    color: rgb(153, 153, 153);
+  }
+
+  .cm-s-inner .cm-link, .cm-s-inner.cm-link {
+    color: rgb(0, 0, 204);
+  }
+
+  .cm-negative {
+    color: rgb(221, 68, 68);
+  }
+
+  .cm-positive {
+    color: rgb(34, 153, 34);
+  }
+
+  .cm-header, .cm-strong {
+    font-weight: 700;
+  }
+
+  .cm-del {
+    text-decoration: line-through;
+  }
+
+  .cm-em {
+    font-style: italic;
+  }
+
+  .cm-link {
+    text-decoration: underline;
+  }
+
+  .cm-error {
+    color: red;
+  }
+
+  .cm-invalidchar {
+    color: red;
+  }
+
+  .cm-constant {
+    color: rgb(38, 139, 210);
+  }
+
+  .cm-defined {
+    color: rgb(181, 137, 0);
+  }
+
+  div.CodeMirror span.CodeMirror-matchingbracket {
+    color: rgb(0, 255, 0);
+  }
+
+  div.CodeMirror span.CodeMirror-nonmatchingbracket {
+    color: rgb(255, 34, 34);
+  }
+
+  .cm-s-inner .CodeMirror-activeline-background {
+    background: inherit;
+  }
+
+  .CodeMirror {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .CodeMirror-scroll {
+    height: 100%;
+    outline: 0px;
+    position: relative;
+    box-sizing: content-box;
+    background: inherit;
+  }
+
+  .CodeMirror-sizer {
+    position: relative;
+  }
+
+  .CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar {
+    position: absolute;
+    z-index: 6;
+    display: none;
+  }
+
+  .CodeMirror-vscrollbar {
+    right: 0px;
+    top: 0px;
+    overflow: hidden;
+  }
+
+  .CodeMirror-hscrollbar {
+    bottom: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+
+  .CodeMirror-scrollbar-filler {
+    right: 0px;
+    bottom: 0px;
+  }
+
+  .CodeMirror-gutter-filler {
+    left: 0px;
+    bottom: 0px;
+  }
+
+  .CodeMirror-gutters {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    padding-bottom: 30px;
+    z-index: 3;
+  }
+
+  .CodeMirror-gutter {
+    white-space: normal;
+    height: 100%;
+    box-sizing: content-box;
+    padding-bottom: 30px;
+    margin-bottom: -32px;
+    display: inline-block;
+  }
+
+  .CodeMirror-gutter-wrapper {
+    position: absolute;
+    z-index: 4;
+    background: 0px 0px !important;
+    border: none !important;
+  }
+
+  .CodeMirror-gutter-background {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    z-index: 4;
+  }
+
+  .CodeMirror-gutter-elt {
+    position: absolute;
+    cursor: default;
+    z-index: 4;
+  }
+
+  .CodeMirror-lines {
+    cursor: text;
+  }
+
+  .CodeMirror pre {
+    border-radius: 0px;
+    border-width: 0px;
+    background: 0px 0px;
+    font-family: inherit;
+    font-size: inherit;
+    margin: 0px;
+    white-space: pre;
+    overflow-wrap: normal;
+    color: inherit;
+    z-index: 2;
+    position: relative;
+    overflow: visible;
+  }
+
+  .CodeMirror-wrap pre {
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    word-break: normal;
+  }
+
+  .CodeMirror-code pre {
+    border-right: 30px solid transparent;
+    width: fit-content;
+  }
+
+  .CodeMirror-wrap .CodeMirror-code pre {
+    border-right: none;
+    width: auto;
+  }
+
+  .CodeMirror-linebackground {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    z-index: 0;
+  }
+
+  .CodeMirror-linewidget {
+    position: relative;
+    z-index: 2;
+    overflow: auto;
+  }
+
+  .CodeMirror-wrap .CodeMirror-scroll {
+    overflow-x: hidden;
+  }
+
+  .CodeMirror-measure {
+    position: absolute;
+    width: 100%;
+    height: 0px;
+    overflow: hidden;
+    visibility: hidden;
+  }
+
+  .CodeMirror-measure pre {
+    position: static;
+  }
+
+  .CodeMirror div.CodeMirror-cursor {
+    position: absolute;
+    visibility: hidden;
+    border-right: none;
+    width: 0px;
+  }
+
+  .CodeMirror div.CodeMirror-cursor {
+    visibility: hidden;
+  }
+
+  .CodeMirror-focused div.CodeMirror-cursor {
+    visibility: inherit;
+  }
+
+  .cm-searching {
+    background: rgba(255, 255, 0, 0.4);
+  }
+
+  @media print {
+    .CodeMirror div.CodeMirror-cursor {
+      visibility: hidden;
+    }
+  }
+
+
+  :root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+  }
+
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    font-family: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+  }
+
+  #write {
+    max-width: 860px;
+    margin: 0px auto;
+    padding: 30px 30px 100px;
+  }
+
+  #write > ul:first-child, #write > ol:first-child {
+    margin-top: 30px;
+  }
+
+  a {
+    color: rgb(65, 131, 196);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+  }
+
+  h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+    text-decoration: none;
+  }
+
+  h1 tt, h1 code {
+    font-size: inherit;
+  }
+
+  h2 tt, h2 code {
+    font-size: inherit;
+  }
+
+  h3 tt, h3 code {
+    font-size: inherit;
+  }
+
+  h4 tt, h4 code {
+    font-size: inherit;
+  }
+
+  h5 tt, h5 code {
+    font-size: inherit;
+  }
+
+  h6 tt, h6 code {
+    font-size: inherit;
+  }
+
+  h1 {
+    padding-bottom: 0.3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid rgb(238, 238, 238);
+  }
+
+  h2 {
+    padding-bottom: 0.3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid rgb(238, 238, 238);
+  }
+
+  h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+  }
+
+  h4 {
+    font-size: 1.25em;
+  }
+
+  h5 {
+    font-size: 1em;
+  }
+
+  h6 {
+    font-size: 1em;
+    color: rgb(119, 119, 119);
+  }
+
+  p, blockquote, ul, ol, dl, table {
+    margin: 0.8em 0px;
+  }
+
+  li > ol, li > ul {
+    margin: 0px;
+  }
+
+  hr {
+    height: 2px;
+    padding: 0px;
+    margin: 16px 0px;
+    background-color: rgb(231, 231, 231);
+    border: 0px none;
+    overflow: hidden;
+    box-sizing: content-box;
+  }
+
+  li p.first {
+    display: inline-block;
+  }
+
+  ul, ol {
+    padding-left: 30px;
+  }
+
+  ul:first-child, ol:first-child {
+    margin-top: 0px;
+  }
+
+  ul:last-child, ol:last-child {
+    margin-bottom: 0px;
+  }
+
+  blockquote {
+    border-left: 4px solid rgb(223, 226, 229);
+    padding: 0px 15px;
+    color: rgb(119, 119, 119);
+  }
+
+  blockquote blockquote {
+    padding-right: 0px;
+  }
+
+  table {
+    padding: 0px;
+    word-break: initial;
+  }
+
+  table tr {
+    border-top: 1px solid rgb(223, 226, 229);
+    margin: 0px;
+    padding: 0px;
+  }
+
+  table tr:nth-child(2n), thead {
+    background-color: rgb(248, 248, 248);
+  }
+
+  table tr th {
+    font-weight: bold;
+    border-width: 1px 1px 0px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-top-color: rgb(223, 226, 229);
+    border-right-color: rgb(223, 226, 229);
+    border-left-color: rgb(223, 226, 229);
+    border-image: initial;
+    border-bottom-style: initial;
+    border-bottom-color: initial;
+    margin: 0px;
+    padding: 6px 13px;
+  }
+
+  table tr td {
+    border: 1px solid rgb(223, 226, 229);
+    margin: 0px;
+    padding: 6px 13px;
+  }
+
+  table tr th:first-child, table tr td:first-child {
+    margin-top: 0px;
+  }
+
+  table tr th:last-child, table tr td:last-child {
+    margin-bottom: 0px;
+  }
+
+  .CodeMirror-lines {
+    padding-left: 4px;
+  }
+
+  .code-tooltip {
+    box-shadow: rgba(0, 28, 36, 0.3) 0px 1px 1px 0px;
+    border-top: 1px solid rgb(238, 242, 242);
+  }
+
+  .md-fences, code, tt {
+    border: 1px solid rgb(231, 234, 237);
+    background-color: rgb(248, 248, 248);
+    border-radius: 3px;
+    padding: 2px 4px 0px;
+    font-size: 0.9em;
+  }
+
+  code {
+    background-color: rgb(243, 244, 244);
+    padding: 0px 2px;
+  }
+
+  .md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+  }
+
+  .md-task-list-item > input {
+    margin-left: -1.3em;
+  }
+
+  @media print {
+    html {
+      font-size: 13px;
+    }
+
+    table, pre {
+      break-inside: avoid;
+    }
+
+    pre {
+      overflow-wrap: break-word;
+    }
+  }
+
+  .md-fences {
+    background-color: rgb(248, 248, 248);
+  }
+
+  #write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: rgb(247, 247, 247);
+    border: 0px;
+    border-radius: 3px;
+    color: rgb(119, 119, 119);
+    margin-top: 0px !important;
+  }
+
+  .mathjax-block > .code-tooltip {
+    bottom: 0.375rem;
+  }
+
+  .md-mathjax-midline {
+    background: rgb(250, 250, 250);
+  }
+
+  #write > h3.md-focus::before {
+    left: -1.5625rem;
+    top: 0.375rem;
+  }
+
+  #write > h4.md-focus::before {
+    left: -1.5625rem;
+    top: 0.285714rem;
+  }
+
+  #write > h5.md-focus::before {
+    left: -1.5625rem;
+    top: 0.285714rem;
+  }
+
+  #write > h6.md-focus::before {
+    left: -1.5625rem;
+    top: 0.285714rem;
+  }
+
+  .md-image > .md-meta {
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+  }
+
+  .md-tag {
+    color: rgb(167, 167, 167);
+    opacity: 1;
+  }
+
+  .md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .sidebar-tabs {
+    border-bottom: none;
+  }
+
+  #typora-quick-open {
+    border: 1px solid rgb(221, 221, 221);
+    background-color: rgb(248, 248, 248);
+  }
+
+  #typora-quick-open-item {
+    background-color: rgb(250, 250, 250);
+    border-color: rgb(254, 254, 254) rgb(229, 229, 229) rgb(229, 229, 229) rgb(238, 238, 238);
+    border-style: solid;
+    border-width: 1px;
+  }
+
+  .on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+  }
+
+  header, .context-menu, .megamenu-content, footer {
+    font-family: "Segoe UI", Arial, sans-serif;
+  }
+
+  .file-node-content:hover .file-node-icon, .file-node-content:hover .file-node-open-state {
+    visibility: visible;
+  }
+
+  .mac-seamless-mode #typora-sidebar {
+    background-color: var(--side-bar-bg-color);
+  }
+
+  .md-lang {
+    color: rgb(180, 101, 77);
+  }
+
+  .html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+  }
+
+  #md-notification .btn {
+    border: 0px;
+  }
+
+  .dropdown-menu .divider {
+    border-color: rgb(229, 229, 229);
+  }
+
+  .ty-preferences .window-content {
+    background-color: rgb(250, 250, 250);
+  }
+
+  .ty-preferences .nav-group-item.active {
+    color: white;
+    background: rgb(153, 153, 153);
+  }
+
+
+  .md-toc-inner {
+    text-decoration: none;
+  }
+
+  .md-toc-content {
+    counter-reset: h1toc 0;
+  }
+
+  .md-toc-h1 {
+    margin-left: 0px;
+    font-size: 1.5rem;
+    counter-reset: h2toc 0;
+  }
+
+  .md-toc-h2 {
+    font-size: 1.1rem;
+    margin-left: 2rem;
+    counter-reset: h3toc 0;
+  }
+
+  .md-toc-h3 {
+    margin-left: 3rem;
+    font-size: 0.9rem;
+    counter-reset: h4toc 0;
+  }
+
+  .md-toc-h4 {
+    margin-left: 4rem;
+    font-size: 0.85rem;
+    counter-reset: h5toc 0;
+  }
+
+  .md-toc-h5 {
+    margin-left: 5rem;
+    font-size: 0.8rem;
+    counter-reset: h6toc 0;
+  }
+
+  .md-toc-h6 {
+    margin-left: 6rem;
+    font-size: 0.75rem;
+  }
+
+  .md-toc-h1::before {
+    color: black;
+    counter-increment: h1toc 1;
+    content: counter(h1toc) ". ";
+  }
+
+  .md-toc-h1 .md-toc-inner {
+    margin-left: 0px;
+  }
+
+  .md-toc-h2::before {
+    color: black;
+    counter-increment: h2toc 1;
+    content: counter(h1toc) ". " counter(h2toc) ". ";
+  }
+
+  .md-toc-h2 .md-toc-inner {
+    margin-left: 0px;
+  }
+
+  .md-toc-h3::before {
+    color: black;
+    counter-increment: h3toc 1;
+    content: counter(h1toc) ". " counter(h2toc) ". " counter(h3toc) ". ";
+  }
+
+  .md-toc-h3 .md-toc-inner {
+    margin-left: 0px;
+  }
+
+  .md-toc-h4::before {
+    color: black;
+    counter-increment: h4toc 1;
+    content: counter(h1toc) ". " counter(h2toc) ". " counter(h3toc) ". " counter(h4toc) ". ";
+  }
+
+  .md-toc-h4 .md-toc-inner {
+    margin-left: 0px;
+  }
+
+  .md-toc-h5::before {
+    color: black;
+    counter-increment: h5toc 1;
+    content: counter(h1toc) ". " counter(h2toc) ". " counter(h3toc) ". " counter(h4toc) ". " counter(h5toc) ". ";
+  }
+
+  .md-toc-h5 .md-toc-inner {
+    margin-left: 0px;
+  }
+
+  .md-toc-h6::before {
+    color: black;
+    counter-increment: h6toc 1;
+    content: counter(h1toc) ". " counter(h2toc) ". " counter(h3toc) ". " counter(h4toc) ". " counter(h5toc) ". " counter(h6toc) ". ";
+  }
+
+  .md-toc-h6 .md-toc-inner {
+    margin-left: 0px;
+  }
+
+  #write {
+    counter-reset: h1 0;
+  }
+
+  h1 {
+    counter-reset: h2 0;
+  }
+
+  h2 {
+    counter-reset: h3 0;
+  }
+
+  h3 {
+    counter-reset: h4 0;
+  }
+
+  h4 {
+    counter-reset: h5 0;
+  }
+
+  h5 {
+    counter-reset: h6 0;
+  }
+
+  #write h1::before {
+    counter-increment: h1 1;
+    content: counter(h1) " ";
+  }
+
+  #write h2::before {
+    counter-increment: h2 1;
+    content: counter(h1) "." counter(h2) " ";
+  }
+
+  #write h3::before, h3.md-focus.md-heading::before {
+    counter-increment: h3 1;
+    content: counter(h1) "." counter(h2) "." counter(h3) " ";
+  }
+
+  #write h4::before, h4.md-focus.md-heading::before {
+    counter-increment: h4 1;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) " ";
+  }
+
+  #write h5::before, h5.md-focus.md-heading::before {
+    counter-increment: h5 1;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) " ";
+  }
+
+  #write h6::before, h6.md-focus.md-heading::before {
+    counter-increment: h6 1;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) " ";
+  }
+
+  #write > h3.md-focus::before, #write > h4.md-focus::before, #write > h5.md-focus::before, #write > h6.md-focus::before, h3.md-focus::before, h4.md-focus::before, h5.md-focus::before, h6.md-focus::before {
+    color: inherit;
+    border: inherit;
+    border-radius: inherit;
+    position: inherit;
+    left: initial;
+    float: none;
+    top: initial;
+    font-size: inherit;
+    padding-left: inherit;
+    padding-right: inherit;
+    vertical-align: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+
+
+  </style>
+</head>
+<body class="typora-export os-windows">
+<div id="write" class="is-node"><p>&nbsp;</p>
+  <p><font size="8"><strong><span>GSK设备管理系统（用户手册）</span></strong></font></p>
+  <p><span> </span></p>
+  <div class="md-toc" mdtype="toc"><p class="md-toc-content"><span class="md-toc-item md-toc-h1" data-ref="n6"><a
+    class="md-toc-inner" style="cursor: pointer;" href="#%E6%A6%82%E8%BF%B0">概述</a></span><span
+    class="md-toc-item md-toc-h2" data-ref="n8"><a class="md-toc-inner" style="cursor: pointer;"
+                                                   href="#%E5%AE%89%E8%A3%85">安装</a></span><span
+    class="md-toc-item md-toc-h3" data-ref="n9"><a class="md-toc-inner" style="cursor: pointer;"
+                                                   href="#%E7%94%B5%E8%84%91%E9%85%8D%E7%BD%AE">电脑配置</a></span><span
+    class="md-toc-item md-toc-h3" data-ref="n24"><a class="md-toc-inner" style="cursor: pointer;"
+                                                    href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85">软件安装</a></span><span
+    class="md-toc-item md-toc-h4" data-ref="n25"><a class="md-toc-inner" style="cursor: pointer;"
+                                                    href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C">准备工作</a></span><span
+    class="md-toc-item md-toc-h4" data-ref="n30"><a class="md-toc-inner" style="cursor: pointer;"
+                                                    href="#%E5%AE%89%E8%A3%85%E8%AF%B4%E6%98%8E">安装说明</a></span><span
+    class="md-toc-item md-toc-h4" data-ref="n36"><a class="md-toc-inner" style="cursor: pointer;"
+                                                    href="#%E8%BD%AF%E4%BB%B6%E6%B3%A8%E5%86%8C">软件注册</a></span><span
+    class="md-toc-item md-toc-h4" data-ref="n46"><a class="md-toc-inner" style="cursor: pointer;"
+                                                    href="#%E8%BF%90%E8%A1%8C">运行</a></span><span
+    class="md-toc-item md-toc-h2" data-ref="n51"><a class="md-toc-inner" style="cursor: pointer;"
+                                                    href="#cnc%E9%85%8D%E7%BD%AE">CNC配置</a></span><span
+    class="md-toc-item md-toc-h3" data-ref="n52"><a class="md-toc-inner" style="cursor: pointer;"
+                                                    href="#%E6%94%AF%E6%8C%81%E7%89%88%E6%9C%AC">支持版本</a></span><span
+    class="md-toc-item md-toc-h3" data-ref="n83"><a class="md-toc-inner" style="cursor: pointer;"
+                                                    href="#gsk980tdi%E9%85%8D%E7%BD%AE">GSK980TDi配置</a></span><span
+    class="md-toc-item md-toc-h3" data-ref="n96"><a class="md-toc-inner" style="cursor: pointer;"
+                                                    href="#gsk988ta%E9%85%8D%E7%BD%AE">GSK988TA配置</a></span><span
+    class="md-toc-item md-toc-h2" data-ref="n117"><a class="md-toc-inner" style="cursor: pointer;"
+                                                     href="#%E7%BD%91%E7%BB%9C%E8%BF%9E%E9%80%9A%E6%B5%8B%E8%AF%95">网络连通测试</a></span><span
+    class="md-toc-item md-toc-h1" data-ref="n134"><a class="md-toc-inner" style="cursor: pointer;"
+                                                     href="#%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E">管理系统软件说明</a></span><span
+    class="md-toc-item md-toc-h2" data-ref="n135"><a class="md-toc-inner" style="cursor: pointer;"
+                                                     href="#%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD%E5%88%97%E8%A1%A8">管理系统功能列表</a></span><span
+    class="md-toc-item md-toc-h2" data-ref="n192"><a class="md-toc-inner" style="cursor: pointer;"
+                                                     href="#%E8%AE%BE%E5%A4%87%E7%9C%8B%E6%9D%BF%E5%8A%9F%E8%83%BD%E5%88%97%E8%A1%A8">设备看板功能列表</a></span><span
+    class="md-toc-item md-toc-h2" data-ref="n207"><a class="md-toc-inner" style="cursor: pointer;"
+                                                     href="#%E9%A1%B5%E9%9D%A2%E8%AF%B4%E7%94%A8%E8%AF%B4%E6%98%8E">页面说用说明</a></span><span
+    class="md-toc-item md-toc-h3" data-ref="n208"><a class="md-toc-inner" style="cursor: pointer;"
+                                                     href="#%E8%AE%BE%E7%BD%AE%E9%A1%B5%E9%9D%A2">设置页面</a></span><span
+    class="md-toc-item md-toc-h4" data-ref="n211"><a class="md-toc-inner" style="cursor: pointer;"
+                                                     href="#%E6%B7%BB%E5%8A%A0%E8%AE%BE%E5%A4%87">添加设备</a></span><span
+    class="md-toc-item md-toc-h4" data-ref="n228"><a class="md-toc-inner" style="cursor: pointer;"
+                                                     href="#%E6%88%90%E5%93%81%E8%BE%93%E5%87%BA">成品输出</a></span><span
+    class="md-toc-item md-toc-h4" data-ref="n232"><a class="md-toc-inner" style="cursor: pointer;"
+                                                     href="#%E5%88%A0%E9%99%A4">删除</a></span><span
+    class="md-toc-item md-toc-h4" data-ref="n236"><a class="md-toc-inner" style="cursor: pointer;"
+                                                     href="#%E7%BC%96%E8%BE%91">编辑</a></span><span
+    class="md-toc-item md-toc-h4" data-ref="n240"><a class="md-toc-inner" style="cursor: pointer;"
+                                                     href="#%E4%BF%9D%E5%AD%98">保存</a></span><span
+    class="md-toc-item md-toc-h3" data-ref="n247"><a class="md-toc-inner" style="cursor: pointer;"
+                                                     href="#%E8%AE%BE%E5%A4%87%E6%80%BB%E8%A7%88">设备总览</a></span><span
+    class="md-toc-item md-toc-h3" data-ref="n265"><a class="md-toc-inner" style="cursor: pointer;"
+                                                     href="#%E6%9C%BA%E5%BA%8A%E7%9B%91%E6%8E%A7">机床监控</a></span><span
+    class="md-toc-item md-toc-h3" data-ref="n275"><a class="md-toc-inner" style="cursor: pointer;"
+                                                     href="#%E7%A8%8B%E5%BA%8F%E6%96%87%E4%BB%B6">程序文件</a></span><span
+    class="md-toc-item md-toc-h3" data-ref="n281"><a class="md-toc-inner" style="cursor: pointer;"
+                                                     href="#%E5%88%80%E5%81%8F%E8%AE%BE%E7%BD%AE">刀偏设置</a></span><span
+    class="md-toc-item md-toc-h3" data-ref="n287"><a class="md-toc-inner" style="cursor: pointer;"
+                                                     href="#%E7%9C%8B%E6%9D%BF">看板</a></span></p></div>
+  <p>&nbsp;</p>
+  <h1><a name="概述" class="md-header-anchor"></a><span>概述</span></h1>
+  <p><span>使用本系统能实现对GSK设备的状态监控，通过下文你将了解到如何使用本系统。</span></p>
+  <h2><a name="安装" class="md-header-anchor"></a><span>安装</span></h2>
+  <h3><a name="电脑配置" class="md-header-anchor"></a><span>电脑配置</span></h3>
+  <figure>
+    <table>
+      <thead>
+      <tr>
+        <th><span>项目</span></th>
+        <th><span>最低配置</span></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><span>操作系统</span></td>
+        <td><span>windows 7</span></td>
+      </tr>
+      <tr>
+        <td><span>CPU</span></td>
+        <td><span>2GHz</span></td>
+      </tr>
+      <tr>
+        <td><span>内存</span></td>
+        <td><span>4GB</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </figure>
+  <p>&nbsp;</p>
+  <h3><a name="软件安装" class="md-header-anchor"></a><span>软件安装</span></h3><h4><a name="准备工作" class="md-header-anchor"></a><span>准备工作</span>
+  </h4>
+  <ul>
+    <li><span>记录本机电脑IP，用于设置到某些型号CNC。</span></li>
+  </ul>
+  <pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div
+    class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div
+    style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea
+    autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"
+    style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div
+    class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler"
+                                                                         cm-not-content="true"></div><div
+    class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer"
+                                                 style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div
+    style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation"
+                                                                                                 style="position: relative; outline: none;"><div
+    class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div
+    style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div
+    class="CodeMirror-activeline" style="position: relative;"><div
+    class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div
+    class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre
+    class=" CodeMirror-line " role="presentation"><span role="presentation"
+                                                        style="padding-right: 0.1px;">举例：</span></pre></div><pre
+    class=" CodeMirror-line " role="presentation"><span role="presentation"
+                                                        style="padding-right: 0.1px;">192.168.11.19</span></pre></div></div></div></div></div><div
+    style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 46px;"></div><div
+    class="CodeMirror-gutters" style="display: none; height: 46px;"></div></div></div></pre>
+  <h4><a name="安装说明" class="md-header-anchor"></a><span>安装说明</span></h4>
+  <ul>
+    <li><span>运行“GSK设备管理系统.exe”安装。一般情况下可一直点击“下一步”按默认安装。</span></li>
+  </ul>
+  <p><img src="./readme_files/1567743391664.png" alt="1567743391664" referrerpolicy="no-referrer"></p>
+  <p>&nbsp;</p><h4><a name="软件注册" class="md-header-anchor"></a><span>软件注册</span></h4>
+  <ul>
+    <li><span>右键“桌面/启动GSK车间管理”，以管理员身份运行。</span></li>
+    <li><span>发送“注册码”给业务人员生成验证码。</span></li>
+  </ul>
+  <p><img src="./readme_files/1567570328413.png" alt="1567570328413" referrerpolicy="no-referrer"></p>
+  <ul>
+    <li><span>填入验证码后按“确定”完成注册。</span></li>
+  </ul>
+  <h4><a name="运行" class="md-header-anchor"></a><span>运行</span></h4>
+  <ul>
+    <li><span>运行 “桌面/启动GSK车间管理”。</span></li>
+  </ul>
+  <p>&nbsp;</p>
+  <h2><a name="cnc配置" class="md-header-anchor"></a><span>CNC配置</span></h2>
+  <h3><a name="支持版本" class="md-header-anchor"></a><span>支持版本</span></h3>
+  <figure>
+    <table>
+      <thead>
+      <tr>
+        <th><span>CNC型号</span></th>
+        <th><span>最低版本</span></th>
+        <th><span>配置</span></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><span>GSK988TA</span></td>
+        <td><span>V1.68</span></td>
+        <td><span>（见下文GSK988TA配置）</span></td>
+      </tr>
+      <tr>
+        <td><span>GSK988TD</span></td>
+        <td><span>V2.01</span></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><span>GSK980TDi</span></td>
+        <td><span>V6.20h</span></td>
+        <td><span>（见下文GSK980TDi配置）</span></td>
+      </tr>
+      <tr>
+        <td><span>GSK980MDi</span></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><span>GSK980TC3</span></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><span>GSK25i</span></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      </tbody>
+    </table>
+  </figure>
+  <h3><a name="gsk980tdi配置" class="md-header-anchor"></a><span>GSK980TDi配置</span></h3>
+  <p><span>操作步骤：</span></p>
+  <ul>
+    <li><p><span>切换页面确认版本号；</span></p></li>
+    <li><p><span>切换到“参数-&gt;状态参数”页面；</span></p>
+      <ul>
+        <li><span>修改0250号参数，置位“RMDATA监控”和“MBT监控”；</span></li>
+      </ul>
+    </li>
+    <li><p><span>切换到IP页面记下IP地址。</span></p></li>
+  </ul>
+  <p>&nbsp;</p>
+  <h3><a name="gsk988ta配置" class="md-header-anchor"></a><span>GSK988TA配置</span></h3>
+  <p><span>操作步骤：</span></p>
+  <ul>
+    <li><p><span>切换页面确认版本号；</span></p></li>
+    <li><p><span>切换到“设置-&gt;CNC设置-&gt;系统IP”页面；</span></p>
+      <ul>
+        <li><span>修改“IP地址”；示例：</span></li>
+      </ul>
+      <pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div
+        class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div
+        style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea
+        autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"
+        style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div
+        class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler"
+                                                                             cm-not-content="true"></div><div
+        class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer"
+                                                     style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div
+        style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation"
+                                                                                                     style="position: relative; outline: none;"><div
+        class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div
+        style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div
+        class="CodeMirror-activeline" style="position: relative;"><div
+        class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div
+        class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre
+        class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">IP地址：192.168.11.111</span></pre></div><div
+        class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span
+        role="presentation" style="padding-right: 0.1px;">子网掩码：255.255.255.0</span></pre></div><pre
+        class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">默认网关：192.168.11.254</span></pre></div></div></div></div></div><div
+        style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 69px;"></div><div
+        class="CodeMirror-gutters" style="display: none; height: 69px;"></div></div></div></pre>
+      <ul>
+        <li><span>修改“外部接入IP地址”（即电脑IP）；示例：</span></li>
+      </ul>
+      <pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div
+        class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div
+        style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea
+        autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"
+        style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div
+        class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler"
+                                                                             cm-not-content="true"></div><div
+        class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer"
+                                                     style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div
+        style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation"
+                                                                                                     style="position: relative; outline: none;"><div
+        class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div
+        style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div
+        class="CodeMirror-activeline" style="position: relative;"><div
+        class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div
+        class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre
+        class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">（序号任意） &nbsp; &nbsp; 192.168.11.19 &nbsp; 读写</span></pre></div></div></div></div></div></div><div
+        style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div
+        class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre>
+    </li>
+    <li><p><span>切换到“系统-&gt;参数”页面；</span></p>
+      <ul>
+        <li><span>修改0930号参数，置位“MODBUS”、“NDSVR”和“RMEN”;</span></li>
+      </ul>
+    </li>
+  </ul>
+  <p>&nbsp;</p>
+  <h2><a name="网络连通测试" class="md-header-anchor"></a><span>网络连通测试</span></h2>
+  <ul>
+    <li><p><span>使用电脑进行以下操作：</span></p></li>
+    <li><p><span>Ctrl+r cmd 回车</span></p></li>
+    <li><p><span>ping </span><span>&lt;</span><span>设备IP</span><span>&gt;</span></p>
+      <ul>
+        <li><p><span>网络连通正常：</span></p>
+          <p><img src="./readme_files/1567573676219.png" alt="1567573676219" referrerpolicy="no-referrer"></p></li>
+        <li><p><span>网络连通异常：</span></p>
+          <p><img src="./readme_files/1567573918803.png" alt="1567573918803" referrerpolicy="no-referrer"></p></li>
+      </ul>
+    </li>
+  </ul>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <h1><a name="管理系统软件说明" class="md-header-anchor"></a><span>管理系统软件说明</span></h1>
+  <h2><a name="管理系统功能列表" class="md-header-anchor"></a><span>管理系统功能列表</span></h2>
+  <figure>
+    <table>
+      <thead>
+      <tr>
+        <th><span>显示内容</span></th>
+        <th><span>说明</span></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><span>设备状态</span></td>
+        <td><span>关机（灰）、待机（黄）、加工（绿）、报警（红）</span></td>
+      </tr>
+      <tr>
+        <td><span>设备名称</span></td>
+        <td><span>车床1，车床2，切削1、机器人1、机器人2等别名，由用户配置</span></td>
+      </tr>
+      <tr>
+        <td><span>设备型号</span></td>
+        <td><span>例如GSK988TA，由用户配置</span></td>
+      </tr>
+      <tr>
+        <td><span>设备编号</span></td>
+        <td><span>例如L05CUM00822TA1H，由用户配置</span></td>
+      </tr>
+      <tr>
+        <td><span>关机时间</span></td>
+        <td><span>当天0点开始的关机时间统计</span></td>
+      </tr>
+      <tr>
+        <td><span>待机时间</span></td>
+        <td><span>当天0点开始待机时间统计</span></td>
+      </tr>
+      <tr>
+        <td><span>报警时间</span></td>
+        <td><span>当天0点开始报警时间统计</span></td>
+      </tr>
+      <tr>
+        <td><span>加工时间</span></td>
+        <td><span>当天0点开始加工时间统计</span></td>
+      </tr>
+      <tr>
+        <td><span>已加工件数</span></td>
+        <td><span>当天0点开始加工件数统计</span></td>
+      </tr>
+      <tr>
+        <td><span>程序文件</span></td>
+        <td><span>对程序文件的上传和下载</span></td>
+      </tr>
+      <tr>
+        <td><span>刀偏设置</span></td>
+        <td><span>读取和修改刀偏数据</span></td>
+      </tr>
+      <tr>
+        <td><span>报警历史</span></td>
+        <td><span>显示每条报警的序号、内容和时间</span></td>
+      </tr>
+      <tr>
+        <td><span>绝对坐标</span></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><span>进给倍率</span></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><span>手动倍率</span></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><span>快速倍率</span></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><span>手轮倍率</span></td>
+        <td>&nbsp;</td>
+      </tr>
+      </tbody>
+    </table>
+  </figure>
+  <p>&nbsp;</p>
+  <h2><a name="设备看板功能列表" class="md-header-anchor"></a><span>设备看板功能列表</span></h2>
+  <figure>
+    <table>
+      <thead>
+      <tr>
+        <th><span>显示内容</span></th>
+        <th><span>说明</span></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><span>设备状态</span></td>
+        <td><span>关机（灰）、待机（黄）、加工（绿）、报警（红）</span></td>
+      </tr>
+      <tr>
+        <td><span>每台设备加工件数</span></td>
+        <td><span>当天0点开始每台设备加工件数</span></td>
+      </tr>
+      <tr>
+        <td><span>总加工件数</span></td>
+        <td><span>当天0点开始所有设备加工件数</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </figure>
+  <p>&nbsp;</p>
+  <h2><a name="页面说用说明" class="md-header-anchor"></a><span>页面说用说明</span></h2>
+  <h3><a name="设置页面" class="md-header-anchor"></a><span>设置页面</span></h3>
+  <p><img src="./readme_files/1567127647276.png" alt="1567127647276" referrerpolicy="no-referrer"></p>
+  <p>&nbsp;</p><h4><a name="添加设备" class="md-header-anchor"></a><span>添加设备</span></h4>
+  <p><span>点击“添加”按钮后出现：</span></p>
+  <p><img src="./readme_files/1567128399535.png" alt="1567128399535" referrerpolicy="no-referrer"></p>
+  <p>&nbsp;</p>
+  <ul>
+    <li><span>设备类型包括：机床CNC、机器人。</span></li>
+    <li><span>IP地址：设备的IP地址。</span></li>
+    <li><span>Slave ID: 表示modbus的从站ID，非modbus设备此处可填1。</span></li>
+    <li><span>设备名称：车床1，车床2，切削1、机器人1、机器人2等自定义名称,最长8位字符。</span></li>
+    <li><span>设备型号：例如：机床有GSK988TA，机器人有RB08,最长15位字符。</span></li>
+    <li><span>设备编号：机床对应CNC序列号，最长20字符，例如L05CUM00822TA1H。</span></li>
+  </ul>
+  <h4><a name="成品输出" class="md-header-anchor"></a><span>成品输出</span></h4>
+  <ul>
+    <li><span>点击打开设备的“成品输出”，则看板的总产量使用这些设备产量之和。</span></li>
+  </ul>
+  <h4><a name="删除" class="md-header-anchor"></a><span>删除</span></h4>
+  <ul>
+    <li><span>不连接设备点击“删除”。</span></li>
+  </ul>
+  <h4><a name="编辑" class="md-header-anchor"></a><span>编辑</span></h4>
+  <ul>
+    <li><span>编辑设备点击“编辑”。</span></li>
+  </ul>
+  <h4><a name="保存" class="md-header-anchor"></a><span>保存</span></h4>
+  <ul>
+    <li><span>所有操作必须要点击“保存”才生效。</span></li>
+    <li><span>点击“保存”后需要等待服务器对设备重新连接。</span></li>
+  </ul>
+  <p>&nbsp;</p>
+  <h3><a name="设备总览" class="md-header-anchor"></a><span>设备总览</span></h3>
+  <p><img src="./readme_files/1567127668647.png" alt="1567127668647" referrerpolicy="no-referrer"></p>
+  <ul>
+    <li><span>机床共有4种状态：关机（灰）、待机（黄）、加工（绿）和报警（红）。</span></li>
+    <li><span>关机时间：机床和机器人都能提供，从当天0点开始的关机时间。</span></li>
+    <li><span>开机时间：机器人只能提供开机时间，不能提供开机后具体状态的时间。</span></li>
+    <li><span>待机时间：只机床提供，从当天0点开始，开机且非加工状态的时间。</span></li>
+    <li><span>报警时间：只机床提供，从当天0点开始。</span></li>
+    <li><span>加工时间：只机床提供，从当天0点开始。</span></li>
+    <li><span>加工件数：只机床提供，从当天0点开始。</span></li>
+  </ul>
+  <p>&nbsp;</p>
+  <h3><a name="机床监控" class="md-header-anchor"></a><span>机床监控</span></h3>
+  <p><img src="./readme_files/1567127690341.png" alt="1567127690341" referrerpolicy="no-referrer"></p>
+  <ul>
+    <li><span>机床开工情况。</span></li>
+    <li><span>坐标、倍率。</span></li>
+    <li><span>报警历史。</span></li>
+  </ul>
+  <p>&nbsp;</p>
+  <h3><a name="程序文件" class="md-header-anchor"></a><span>程序文件</span></h3>
+  <p><img src="./readme_files/1567127703037.png" alt="1567127703037" referrerpolicy="no-referrer"></p>
+  <ul>
+    <li><p><span>程序上传、下载以及加载。</span></p>
+      <p>&nbsp;</p></li>
+  </ul>
+  <h3><a name="刀偏设置" class="md-header-anchor"></a><span>刀偏设置</span></h3>
+  <p><img src="./readme_files/1567127712441.png" alt="1567127712441" referrerpolicy="no-referrer"></p>
+  <ul>
+    <li><span>刀偏数据的读写。</span></li>
+  </ul>
+  <p>&nbsp;</p>
+  <h3><a name="看板" class="md-header-anchor"></a><span>看板</span></h3>
+  <p><img src="./readme_files/1567573343966.png" alt="1567573343966" referrerpolicy="no-referrer"></p>
+  <ul>
+    <li><span>机床共有4种状态：关机（灰）、待机（黄）、加工（绿）和报警（红）。</span></li>
+    <li><span>饼图分别表示当天机床状态的时间百分比。</span></li>
+    <li><span>饼图下面的数字代表机床当天的加工数量。</span></li>
+    <li><span>看板右面的数值表示产线的今日加工数量总计，这个数是对配置页面中打开“成品输出”的机床的当天加工量之和。</span></li>
+  </ul>
+  <p>&nbsp;</p></div>
+
+</body>
+</html>

@@ -9,41 +9,10 @@ import { ContainerQuery } from 'react-container-query';
 import DocumentTitle from 'react-document-title';
 import classNames from 'classnames';
 import './all.css';
-
-
-const query = {
-  'screen-xs': {
-    maxWidth: 575,
-  },
-  'screen-sm': {
-    minWidth: 576,
-    maxWidth: 767,
-  },
-  'screen-md': {
-    minWidth: 768,
-    maxWidth: 991,
-  },
-  'screen-lg': {
-    minWidth: 992,
-    maxWidth: 1199,
-  },
-  'screen-xl': {
-    minWidth: 1200,
-    maxWidth: 1599,
-  },
-  'screen-xxl': {
-    minWidth: 1600,
-  },
-};
+import { query,menuWorkshop } from './routeData';
 
 const { Header, Content, Footer, Sider } = Layout;
-const menuData = [
-    { route: '/overview', name: '总览' },
-    { route: '/jeremy', name: 'Jeremy\'s' },
-    { route: '/mary', name: 'Mary\'s' },
-    { route: '/lucy', name: 'Lucy\'s'},
 
-]
 const title = `可保存的笔记`
 
 class WorkshopLayout extends React.PureComponent {
@@ -55,10 +24,10 @@ class WorkshopLayout extends React.PureComponent {
         } = this.props;
 
         //初始化获取所有设备基本配置数据和创建websocket
-        /* dispatch({
+        dispatch({
             type: 'machine/initAllMachine',
-            payload: dispatch,
-        }); */
+            payload: {dispatch:dispatch},
+        });
 
         /* dispatch({
             type: 'program/fetch',
@@ -78,16 +47,17 @@ class WorkshopLayout extends React.PureComponent {
         const layout = (
             <Layout>
                 <Header>
-                    <div className={styles.logo}>车间管理系统 </div>
+                    <a className={styles.logo}>车间管理系统 </a>
                     <div>
                         <Menu
                             theme="dark"
-                            mode="vertical"
+                            mode="horizontal"
                             defaultSelectedKeys={[pathname]}
-                            style={{ lineHeight: '64px' }}
+                            style={{ lineHeight: '64px',overflow:'scroll' }}
+
                         >
                             {
-                                menuData.map(menu => (
+                                menuWorkshop.map(menu => (
                                     <Menu.Item key={`${menu.route}`}>
                                         <Link to={menu.route}>{menu.name}</Link>
                                     </Menu.Item>
@@ -96,17 +66,12 @@ class WorkshopLayout extends React.PureComponent {
                         </Menu>
                     </div>
                 </Header>
-                <Layout>
-                    <Content style={{ padding: '0 10px 0px 50px ' }}>
-                        <div style={{ background: '#fff', padding: 24, minHeight: 580 }}>
+                    <Content style={{ paddingTop: '2px ',marginBottom:'24px' }}>
+                        <div style={{ background: '#fff', minHeight: 580 }}>
                             {children}
                         </div>
                     </Content>
-                    <Sider style={{ background: `#ffff`, margin: '0 50px 0 0' }}>
-                        <EditBox title={title} txt={this.state.str} onChange={this.onChange}></EditBox>
-                    </Sider>
-                </Layout>
-                <Footer style={{ textAlign: 'center' }}>基于UmiJS开发 create By Jeremy</Footer>
+
             </Layout>
         );
 
@@ -119,7 +84,6 @@ class WorkshopLayout extends React.PureComponent {
                             <div className={classNames(params)}>{layout}</div>
                         )}
                     </ContainerQuery>
-
                 </DocumentTitle>
             </React.Fragment>
         )

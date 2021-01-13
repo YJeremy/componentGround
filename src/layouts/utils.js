@@ -1,5 +1,7 @@
 import { isNullOrUndefined } from '@/utils/utils';
-export const websocketModel = ({ websocketTest}) => {
+export const websocketModel = ({ websocketTest,iframe}) => {
+
+    const {pageName} = iframe;
 
     const {dynamic} = websocketTest;
 
@@ -45,14 +47,14 @@ export const websocketModel = ({ websocketTest}) => {
     // ws 还没建立、还么传值
     if (dynamic === null) {
         return {
-            ...initState
+            ...initState,
+            pageName
         };
     } else {
 
     const {analysis,cord,time} = dynamic[0][0];
     const {absolute,relative,machine:cordMachine,remain} = cord;
     const {cut,run}= time;
-
 
     return {
         ...initState,
@@ -61,14 +63,13 @@ export const websocketModel = ({ websocketTest}) => {
         machine:cordMachine,
         remain:remain,
         run:run,
+        pageName,
     };
 
     }
-
-
    };
 
-export const machineModel = ({ machine, staticModel }) => ({
+export const machineModel = ({ machine, staticModel,}) => ({
     machine: machine,
     staticModel: staticModel,
 })

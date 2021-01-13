@@ -1,58 +1,21 @@
 import React from 'react';
 import { connect } from 'dva';
 
-const intervalCrossover = 1000;
-
-export const createWS = (api, dispatch) => {
-    const ws = new WebSocket(`${api}`);
-    let now = Number(new Date());
-
-    ws.addEventListener('open', () => {
-        dispatch({
-            type: 'websocketTest/wsOpen',
-            payload: {
-                ws,
-            },
-        });
-    });
-
-    const wsClose = () => {
-        // 防止二次触发, 可能没用
-        ws.removeEventListener('close', wsClose);
-        // 出现错误/关闭, 关闭连接; 触发重渲染, 然后重连; 同时防止关闭了新的连接
-        dispatch({
-            type: 'websocketTest/wsClose',
-            payload: {
-                ws,
-            },
-        });
-    };
-
-    //ws.addEventListener('close', wsClose); //因为后面加了延时，会出现把第一台关闭了的情况，所以注释这里
-    ws.addEventListener('error', () => {
-        ws.close();
-    });
-    ws.addEventListener('message', ({ data }) => {
-        // slow down 每1秒一次信息
-        if (Number(new Date()) - now < intervalCrossover) {
-            return;
-        }
-        now = Number(new Date());
-        const wsdata = JSON.parse(data);
-        // 更新数据
-        dispatch({
-            type: 'websocketTest/wsMsg',
-            payload: {
-                dynamic: wsdata,
-            },
-        });
-    });
-};
-
 // {code.dynamic.analysis.time.alm}
 
 @connect(({ websocketTest }) => {
     const dynamic  = websocketTest.dynamic
+    const initData = {
+        part:0,
+        description:'',
+        state:0,
+        timeAlm:0,
+        timeCut:0,
+        idle:0,
+        offline:1,
+        poweron:0,
+        codrAbsolute:[],
+    }
     return {dynamic}
 })
 class WebsocketTest extends React.Component {
@@ -92,7 +55,11 @@ class WebsocketTest extends React.Component {
             );
             //JSX里不能使用条件语句，使用for则创建函数，函数返回react DOM，使用时执行函数（）
             const myLayout8 = (item) => {
+
                 let res = [];
+                if(!dynamic){
+                    return <div></div>;
+                }
                 for (let i = 0; i < item; i++) {
                     res.push(
                         <div key={`${i}`}>
@@ -116,7 +83,7 @@ class WebsocketTest extends React.Component {
                         cuttime : {dynamic[0][0].analysis.time.cut}
                     </div>
                     {/*  {myLayout} */}
-                    {myLayout8(31)}
+                    { myLayout8(5) }
                 </React.Fragment>
             )
         }

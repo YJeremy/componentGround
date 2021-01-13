@@ -111,3 +111,26 @@ export const createWS2 = (api, dispatch) => {
         });
     });
 };
+
+
+export const createWS4CNC = dispatch =>{
+    const ws = new WebSocket(`ws://${cnclinkAddr}/ws`);
+    let now = Number(new Date());
+
+    //
+    ws.addEventListener('open',()=>{
+        dispatch({
+            type: '',
+            payload: {
+                ws:ws,
+            }
+        })
+    })
+
+    // 出现关闭链接的情况是 后端重启或者断开时
+    ws.addEventListener('close',() =>{
+
+    })
+
+
+}

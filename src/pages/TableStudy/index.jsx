@@ -4,6 +4,7 @@ import { SearchOutlined } from '@ant-design/icons';
 import { history } from 'umi';
 import {connect} from 'dva';
 import { websocketModel } from './utils';
+import Paixu from './component/paixu';
 
 
 @connect(websocketModel)
@@ -13,6 +14,16 @@ class TableStudy extends React.Component {
     searchedColumn: '',
     myclearFilters:{},
   };
+
+  componentDidMount(){
+      const {dispatch} = this.props
+      dispatch({
+          type:'iframe/isPage',
+          payload:{
+              pageName:'tableStudy',
+          }
+      })
+  }
 
   getColumnSearchProps = dataIndex => ({
     filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
@@ -44,8 +55,15 @@ class TableStudy extends React.Component {
       </div>
     ),
     filterIcon: filtered => <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />,
-    onFilter: (value, record) =>
-      record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),//注意检查所有数据的属性名必须和表格一致
+
+    onFilter: (value, record) => {
+     if(!record[dataIndex]){//遇到空数据的表格，返回undefined
+            return null
+        }
+        return record[dataIndex].toString().toLowerCase().includes(value.toLowerCase());
+        //注意检查所有数据的属性名必须和表格一致,查找原理是map
+    },
+
     onFilterDropdownVisibleChange: visible => {
       if (visible) {
         setTimeout(() => this.searchInput.select());
@@ -178,6 +196,7 @@ const data2 = [
         <>
             <button onClick = {this.onRefreshPage }>刷新</button>
             <Table columns={columns} dataSource={data2} />
+            <Paixu/>
         </>
     )
   }

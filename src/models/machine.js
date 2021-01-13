@@ -17,10 +17,10 @@ export default {
 
     effects: {
         *initAllMachine({ payload }, { call, put }) {
-            const { server, devs } = yield call(getListCNC);//获取workshop所有配置数据
+            const { server, devs } = yield call(getListCNC);//获取cnclink所有配置数据
             //这里先put，初始化cnclink[]，防止创建ws时index超出数组越界
             //后面cnclink、Robotlinkws创建ws里 已带dispatch调用到 reducers里修改 state的值
-            const dispatch = payload;
+            const {dispatch} = payload;
             yield put({
                 type: 'initBothList',
                 payload: {
@@ -28,14 +28,14 @@ export default {
                 }
             })
 
-            if (devs.length != 0) {
+             if (devs.length != 0) {
                 //创建各台设备的ws
                 devs.forEach((elm, index) => {
                     const timeout = (index * 100) % 1000;
                     window.setTimeout( //过多台ws 也会占用卡顿
                         () =>
                             createWS(
-                                { linkAddr: cnclinkAddr, api: elm.api },
+                                { linkAddr: cnclinkAddr, api:'dev1'},
                                 { type: 'cnclink', index },
                                 dispatch,
                             ),
@@ -47,7 +47,7 @@ export default {
         },
 
         *wstest({payload},{call,put}){
-            
+
 
         }
     },

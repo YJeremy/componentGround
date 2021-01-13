@@ -8,6 +8,7 @@ const crequest = (url, option) =>
         ...option,
     });
 
+//get 获取cnclink.exe 返回的配置信息
 export async function getListCNC() {
     return crequest(`${Protocol}${cnclinkAddr}/api/v1/workshop`);
 }

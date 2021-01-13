@@ -1,9 +1,10 @@
 import React from 'react';
 import ChildLife from './components/ChildLife';
-
+import {connect} from 'dva';
 /**
  * 父组件  为Life.js，里面有两个按钮，作用为把当前组件的count属性+1
  */
+@connect()
 class Life extends React.Component {
 
   //构造器
@@ -13,7 +14,15 @@ class Life extends React.Component {
       count : 0,
     };
   }
-
+   componentDidMount() {
+        const { dispatch } = this.props
+        dispatch({
+            type: 'iframe/isPage',
+            payload: {
+                pageName: 'LifetimePage',
+            }
+        })
+    }
   /**
    * 点击事件的第一种实现方式：
    */
